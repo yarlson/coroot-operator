@@ -14,6 +14,10 @@ type ClusterAgentAWSSpec struct {
 	RDSTagFilters map[string]string `json:"rdsTagFilters,omitempty"`
 	// Discover only ElastiCache clusters whose tags match (glob patterns are supported in values).
 	ElasticacheTagFilters map[string]string `json:"elasticacheTagFilters,omitempty"`
+	// Enable Amazon Keyspaces discovery and CloudWatch AWS/Cassandra polling (off by default).
+	KeyspacesEnabled bool `json:"keyspacesEnabled,omitempty"`
+	// Discover only Keyspaces keyspaces whose tags match (glob patterns are supported in values); all tables in matched keyspaces are collected.
+	KeyspacesTagFilters map[string]string `json:"keyspacesTagFilters,omitempty"`
 }
 
 // ClusterAgentGCPSpec configures the GCP integration of the cluster-agent (discovery of Cloud SQL and Memorystore instances).

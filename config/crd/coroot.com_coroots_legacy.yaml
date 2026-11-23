@@ -4365,6 +4365,14 @@ spec:
                             type: string
                           description: Discover only ElastiCache clusters whose tags match (glob patterns are supported in values).
                           type: object
+                        keyspacesEnabled:
+                          description: Enable Amazon Keyspaces discovery and CloudWatch AWS/Cassandra polling (off by default).
+                          type: boolean
+                        keyspacesTagFilters:
+                          additionalProperties:
+                            type: string
+                          description: Discover only Keyspaces keyspaces whose tags match (glob patterns are supported in values); all tables in matched keyspaces are collected.
+                          type: object
                         rdsTagFilters:
                           additionalProperties:
                             type: string
