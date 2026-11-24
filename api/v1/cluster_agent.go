@@ -2,7 +2,7 @@ package v1
 
 import corev1 "k8s.io/api/core/v1"
 
-// ClusterAgentAWSSpec configures the AWS integration of the cluster-agent (discovery of RDS and ElastiCache instances).
+// ClusterAgentAWSSpec configures the AWS integration of the cluster-agent (discovery of RDS and ElastiCache instances, and Amazon Keyspaces tables).
 // When set, it takes precedence over the AWS integration settings configured in the Coroot UI.
 type ClusterAgentAWSSpec struct {
 	// AWS region to discover instances in. Defaults to the region the cluster runs in.
@@ -14,6 +14,10 @@ type ClusterAgentAWSSpec struct {
 	RDSTagFilters map[string]string `json:"rdsTagFilters,omitempty"`
 	// Discover only ElastiCache clusters whose tags match (glob patterns are supported in values).
 	ElasticacheTagFilters map[string]string `json:"elasticacheTagFilters,omitempty"`
+	// Enables the monitoring of Amazon Keyspaces: discovery of tables and endpoints, and CloudWatch polling (about $1.22 per active table per month).
+	KeyspacesEnabled bool `json:"keyspacesEnabled,omitempty"`
+	// Monitor only the tables of the keyspaces whose tags match (glob patterns are supported in values).
+	KeyspacesTagFilters map[string]string `json:"keyspacesTagFilters,omitempty"`
 }
 
 // ClusterAgentGCPSpec configures the GCP integration of the cluster-agent (discovery of Cloud SQL and Memorystore instances).

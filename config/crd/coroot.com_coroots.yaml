@@ -4801,7 +4801,8 @@ spec:
                     type: object
                   aws:
                     description: AWS integration settings (discovery of RDS and ElastiCache
-                      instances). Overrides the settings made in the Coroot UI.
+                      instances, and Amazon Keyspaces tables). Overrides the settings
+                      made in the Coroot UI.
                     properties:
                       accessKeySecret:
                         description: |-
@@ -4824,6 +4825,17 @@ spec:
                           type: string
                         description: Discover only ElastiCache clusters whose tags
                           match (glob patterns are supported in values).
+                        type: object
+                      keyspacesEnabled:
+                        description: 'Enables the monitoring of Amazon Keyspaces:
+                          discovery of tables and endpoints, and CloudWatch polling
+                          (about $1.22 per active table per month).'
+                        type: boolean
+                      keyspacesTagFilters:
+                        additionalProperties:
+                          type: string
+                        description: Monitor only the tables of the keyspaces whose
+                          tags match (glob patterns are supported in values).
                         type: object
                       rdsTagFilters:
                         additionalProperties:
