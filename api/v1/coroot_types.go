@@ -107,7 +107,7 @@ type ClusterAgentSpec struct {
 	Image ImageSpec       `json:"image,omitempty"`
 	// TLS settings for connecting to Coroot.
 	TLS *AgentTLSSpec `json:"tls,omitempty"`
-	// AWS integration settings (discovery of RDS and ElastiCache instances). Overrides the settings made in the Coroot UI.
+	// AWS integration settings (discovery of RDS and ElastiCache instances, and Amazon Keyspaces tables). Overrides the settings made in the Coroot UI.
 	AWS *ClusterAgentAWSSpec `json:"aws,omitempty"`
 	// GCP integration settings (discovery of Cloud SQL and Memorystore instances).
 	GCP *ClusterAgentGCPSpec `json:"gcp,omitempty"`

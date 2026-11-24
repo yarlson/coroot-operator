@@ -44,6 +44,8 @@ func (r *CorootReconciler) clusterAgentConfigMap(ctx context.Context, cr *coroot
 		SecretAccessKey       string            `json:"secretAccessKey,omitempty"`
 		RDSTagFilters         map[string]string `json:"rdsTagFilters,omitempty"`
 		ElasticacheTagFilters map[string]string `json:"elasticacheTagFilters,omitempty"`
+		KeyspacesEnabled      bool              `json:"keyspacesEnabled,omitempty"`
+		KeyspacesTagFilters   map[string]string `json:"keyspacesTagFilters,omitempty"`
 	}
 	type gcp struct {
 		ProjectID               string            `json:"projectId,omitempty"`
@@ -86,6 +88,8 @@ func (r *CorootReconciler) clusterAgentConfigMap(ctx context.Context, cr *coroot
 			Region:                a.Region,
 			RDSTagFilters:         a.RDSTagFilters,
 			ElasticacheTagFilters: a.ElasticacheTagFilters,
+			KeyspacesEnabled:      a.KeyspacesEnabled,
+			KeyspacesTagFilters:   a.KeyspacesTagFilters,
 		}
 		if a.AccessKeySecret != nil {
 			cfg.AWS.AccessKeyID = secretRef(&corev1.SecretKeySelector{LocalObjectReference: *a.AccessKeySecret, Key: "access_key_id"})
